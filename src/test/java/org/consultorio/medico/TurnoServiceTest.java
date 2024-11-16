@@ -211,13 +211,13 @@ public class TurnoServiceTest {
 
 
 
-    @AfterEach
+    /*@AfterEach
     void tearDown(){
         especialidadService.clearAll();
         turnoService.clearAll();
         profesionalService.clearAll();
         pacienteService.clearAll();
-    }
+    }*/
 
 
 
