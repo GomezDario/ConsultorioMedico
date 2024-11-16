@@ -68,7 +68,7 @@ public class ProfesionalServiceTest {
 
         paciente1 = new Paciente("Dario");
 
-        turno = new Turno(LocalDateTime.now(),profesional1,paciente1,1);
+        turno = new Turno(LocalDateTime.of(2024, 11, 15, 14, 30),profesional1,paciente1,1);
 
 
     }
@@ -93,6 +93,9 @@ public class ProfesionalServiceTest {
     @AfterEach
     void tearDown(){
         profesionalService.clearAll();
+        especialidadService.clearAll();
+        pacienteService.clearAll();
+        turnoService.clearAll();
     }
 
 }

@@ -21,7 +21,7 @@ public class Especialidad {
     @Column(nullable = false, unique = true)
     private String nombre;
 
-    @OneToMany(mappedBy = "especialidad", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "especialidad", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Profesional> profesionales = new HashSet<>();
 
 

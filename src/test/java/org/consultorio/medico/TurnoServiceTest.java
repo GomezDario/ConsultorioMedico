@@ -170,6 +170,42 @@ public class TurnoServiceTest {
 
     }
 
+    @Test
+    void testPuedeModificarTurno() {
+
+        when(clockProvider.now()).thenReturn(LocalDateTime.of(2024, 11, 15, 12, 30));
+
+        LocalDateTime nuevaFechaHora = LocalDateTime.of(2024, 11, 16, 14, 0);
+        Profesional nuevoProfesional = profesional2;
+        int nuevoConsultorio = 3;
+
+        turnoService.modificarTurno(turno1.getId(), nuevaFechaHora, nuevoProfesional, nuevoConsultorio);
+
+        Turno turnoModificado = turnoService.recuperarTurno(turno1.getId());
+
+        assertEquals(nuevaFechaHora, turnoModificado.getFechaHora());
+        assertEquals(nuevoProfesional.getId(), turnoModificado.getProfesional().getId());
+        assertEquals(nuevoConsultorio, turnoModificado.getConsultorio());
+    }
+
+    @Test
+    void testNoSePuedeModificarTurnoPorRestriccionDeTiempo() {
+
+        when(clockProvider.now()).thenReturn(LocalDateTime.of(2024, 11, 15, 14, 0));
+
+        LocalDateTime nuevaFechaHora = LocalDateTime.of(2024, 11, 16, 14, 0);
+        Profesional nuevoProfesional = profesional2;
+        int nuevoConsultorio = 3;
+
+        Exception exception = assertThrows(IllegalStateException.class, () -> {
+            turnoService.modificarTurno(turno1.getId(), nuevaFechaHora, nuevoProfesional, nuevoConsultorio);
+        });
+
+        assertEquals("No se puede modificar el turno con menos de una hora de anticipacion.", exception.getMessage());
+    }
+
+
+
 
 
 
@@ -178,6 +214,9 @@ public class TurnoServiceTest {
     @AfterEach
     void tearDown(){
         especialidadService.clearAll();
+        turnoService.clearAll();
+        profesionalService.clearAll();
+        pacienteService.clearAll();
     }
 
 
