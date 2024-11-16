@@ -1,27 +1,24 @@
-/* Home.css */
-
-/* Contenedor principal de la página */
 .home {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 70px; /* Aseguramos que no se superponga con la navbar */
-  height: 100vh;  /* Aseguramos que la página ocupe toda la altura de la ventana */
-  background-color: white; /* Color de fondo suave */
-  font-family: Arial, sans-serif;  /* Fuente limpia para el texto */
+  padding-top: 70px; 
+  height: 100vh;  
+  background-color: white; 
+  font-family: Arial, sans-serif; 
   
 }
 
-/* Estilo para el contenido */
+
 .content {
   text-align: center;
-  margin-top: 30px;  /* Separar el contenido del navbar */
+  margin-top: 30px;  
 }
 
 h1 {
   color: #3498DB;
-  font-size: 3em;  /* Aumentar el tamaño del título */
-  margin-bottom: 20px; /* Separación con el párrafo */
+  font-size: 3em;  
+  margin-bottom: 20px; 
 }
 
 p {
@@ -29,7 +26,7 @@ p {
   color: #08e3f3;
 }
 
-/* Estilo de la Navbar para que esté en la parte superior */
+
 .navbar {
   position: fixed;
   top: 0;
@@ -37,7 +34,7 @@ p {
   background-color: #2C3E50;
   padding: 10px 0;
   text-align: center;
-  z-index: 100;  /* Asegura que la navbar esté encima del contenido */
+  z-index: 100;  
 }
 
 .navbar ul {
