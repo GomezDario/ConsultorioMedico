@@ -30,10 +30,10 @@ public class PacienteServiceTest {
     @BeforeEach
     public void prepare() {
 
-        paciente1 = new Paciente("Dario");
-        paciente2 = new Paciente("Gabriel");
-        paciente3 = new Paciente("Juan");
-        paciente4 = new Paciente("Jose");
+        paciente1 = new Paciente("Dario", "Gomez", 24,111222333);
+        paciente2 = new Paciente("Gabriel", "Gomez", 24,222333444);
+        paciente3 = new Paciente("Juan","Perez", 38, 222111333);
+        paciente4 = new Paciente("Jose","Lopez",19,666444222);
 
         pacienteService.guardarPaciente(paciente1);
         pacienteService.guardarPaciente(paciente2);
@@ -62,10 +62,10 @@ public class PacienteServiceTest {
     }
 
 
-    @AfterEach
+    /*@AfterEach
     void tearDown(){
         pacienteService.clearAll();
-    }
+    }*/
 
 
 
