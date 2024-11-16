@@ -3,7 +3,6 @@ div {
     margin: 20px;
 }
 
-
 h1 {
     text-align: center;
     color: #2C3E50;
@@ -11,13 +10,11 @@ h1 {
     margin-bottom: 20px;
 }
 
-
 table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
 }
-
 
 th, td {
     padding: 12px;
@@ -25,23 +22,19 @@ th, td {
     border: 1px solid #ddd;
 }
 
-
 th {
-    background-color: #3498DB;
+    background-color: #16A085;
     color: white;
     font-weight: bold;
 }
-
 
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-
 tr:hover {
-    background-color: #f1c40f;
+    background-color: #1ABC9C;
 }
-
 
 tbody tr.empty {
     font-style: italic;
@@ -49,11 +42,9 @@ tbody tr.empty {
     text-align: center;
 }
 
-
 table, th, td {
     border: 1px solid #ccc;
 }
-
 
 button {
     background-color: #2C3E50;
@@ -65,7 +56,17 @@ button {
     margin-top: 20px;
 }
 
-
 button:hover {
     background-color: #2980B9;
+}
+
+/* Estilo adicional para mejorar la experiencia */
+td.cancelado {
+    color: #E74C3C;
+    font-weight: bold;
+}
+
+td.activo {
+    color: #27AE60;
+    font-weight: bold;
 }
