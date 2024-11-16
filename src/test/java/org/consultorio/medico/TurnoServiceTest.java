@@ -1,9 +1,6 @@
 package org.consultorio.medico;
 
-import org.consultorio.medico.modelo.Especialidad;
-import org.consultorio.medico.modelo.Paciente;
-import org.consultorio.medico.modelo.Profesional;
-import org.consultorio.medico.modelo.Turno;
+import org.consultorio.medico.modelo.*;
 import org.consultorio.medico.service.interfaces.EspecialidadService;
 import org.consultorio.medico.service.interfaces.PacienteService;
 import org.consultorio.medico.service.interfaces.ProfesionalService;
@@ -13,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -20,6 +18,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 public class TurnoServiceTest {
@@ -35,6 +35,9 @@ public class TurnoServiceTest {
 
     @Autowired
     private EspecialidadService especialidadService;
+
+    @MockBean
+    private ClockProvider clockProvider;
 
     private Especialidad dermatologia;
 
@@ -55,6 +58,8 @@ public class TurnoServiceTest {
 
     @BeforeEach
     public void prepare() {
+
+        //Horario en el que trabajan los profesionales, el consultorio es de 8 a 23, estos profesionales tienen su horario particular
         LocalTime horaInicio = LocalTime.of(8, 0);
         LocalTime horaFin = LocalTime.of(16, 0);
 
@@ -86,13 +91,14 @@ public class TurnoServiceTest {
         paciente1 = new Paciente("Dario");
         pacienteService.guardarPaciente(paciente1);
 
-        turno1 = new Turno(LocalDateTime.now(), profesional1, paciente1, 1);
-        turno2 = new Turno(LocalDateTime.now().plusDays(1), profesional1, paciente1, 2);
 
 
+        turno1 = new Turno(LocalDateTime.of(2024, 11, 15, 14, 30), profesional1, paciente1, 1);
+        turno2 = new Turno(LocalDateTime.of(2024, 11, 15, 15, 30), profesional1, paciente1, 2);
 
-        turnoCancelable = new Turno(LocalDateTime.now().plusHours(2), profesional1, paciente1, 1);
-        turnoNoCancelable = new Turno(LocalDateTime.now().plusMinutes(30), profesional1, paciente1, 2);
+
+        turnoCancelable = new Turno(LocalDateTime.of(2024, 11, 15, 14, 30), profesional1, paciente1, 1);
+        turnoNoCancelable = new Turno(LocalDateTime.of(2024, 11, 15, 16, 30), profesional1, paciente1, 2);
 
         turnoService.guardarTurno(turno1);
         turnoService.guardarTurno(turno2);
@@ -122,7 +128,7 @@ public class TurnoServiceTest {
     void testTurnosPorEspecialidad(){
 
         List<Turno> turnos = turnoService.turnosPorEspecialidad(dermatologia);
-        assertEquals(2, turnos.size());
+        assertEquals(4, turnos.size());
         assertEquals(turnos.get(0).getId(), turno1.getId());
         assertEquals(turnos.get(1).getId(), turno2.getId());
 
@@ -141,6 +147,9 @@ public class TurnoServiceTest {
     @Test
     void testPuedeCancelarTurno(){
 
+        // Simular un tiempo actual antes del límite de cancelación
+        when(clockProvider.now()).thenReturn(LocalDateTime.of(2024, 11, 15, 12, 30));
+
         turnoService.cancelarTurno(turnoCancelable.getId());
 
         Turno turnoCancelado = turnoService.recuperarTurno(turnoCancelable.getId());
@@ -150,6 +159,8 @@ public class TurnoServiceTest {
 
     @Test
     void testNoPuedeCancelarTurno(){
+
+        when(clockProvider.now()).thenReturn(LocalDateTime.of(2024, 11, 15, 16, 0));
 
         Exception exception = assertThrows(IllegalStateException.class, () -> {
             turnoService.cancelarTurno(turnoNoCancelable.getId());
@@ -164,10 +175,10 @@ public class TurnoServiceTest {
 
 
 
-    /*@AfterEach
+    @AfterEach
     void tearDown(){
         especialidadService.clearAll();
-    }*/
+    }
 
 
 

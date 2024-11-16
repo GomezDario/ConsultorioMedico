@@ -1,5 +1,6 @@
 package org.consultorio.medico.service.impl;
 
+import org.consultorio.medico.modelo.ClockProvider;
 import org.consultorio.medico.modelo.Especialidad;
 import org.consultorio.medico.modelo.Profesional;
 import org.consultorio.medico.modelo.Turno;
@@ -19,9 +20,11 @@ import java.util.Set;
 public class TurnoServiceImpl implements TurnoService {
 
     private TurnoDAO turnoDAO;
+    private final ClockProvider clockProvider;
 
-    public TurnoServiceImpl(TurnoDAO turnoDAO){
+    public TurnoServiceImpl(TurnoDAO turnoDAO, ClockProvider clockProvider){
         this.turnoDAO = turnoDAO;
+        this.clockProvider = clockProvider;
     }
 
     @Override
@@ -79,7 +82,8 @@ public class TurnoServiceImpl implements TurnoService {
         Turno turno = turnoDAO.findById(turnoId).orElseThrow(() ->
                 new NoSuchElementException("Turno no encontrado con id: " + turnoId));
 
-        if (LocalDateTime.now().isAfter(turno.getFechaHora().minusHours(1))) {
+
+        if (clockProvider.now().isAfter(turno.getFechaHora().minusHours(1))) {
             throw new IllegalStateException("No se puede cancelar el turno con menos de una hora de anticipacion.");
         }
 
@@ -98,7 +102,7 @@ public class TurnoServiceImpl implements TurnoService {
                 new NoSuchElementException("Turno no encontrado con id: " + turnoId));
 
 
-        if (LocalDateTime.now().isAfter(turno.getFechaHora().minusHours(1))) {
+        if (clockProvider.now().isAfter(turno.getFechaHora().minusHours(1))) {
             throw new IllegalStateException("No se puede modificar el turno con menos de una hora de anticipacion.");
         }
 
