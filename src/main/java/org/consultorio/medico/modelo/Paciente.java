@@ -21,11 +21,23 @@ public class Paciente {
     @Column(nullable = false)
     private String nombre;
 
+    @Column(nullable = false)
+    private String apellido;
+
+    @Column(nullable = false)
+    private int edad;
+
+    @Column(nullable = false)
+    private int numeroDni;
+
     @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Turno> turnos = new HashSet<>();
 
-    public Paciente(String nombre){
+    public Paciente(String nombre, String apellido, int edad, int numeroDni){
         this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.numeroDni = numeroDni;
     }
 
     public void agregarTurno(Turno turno){

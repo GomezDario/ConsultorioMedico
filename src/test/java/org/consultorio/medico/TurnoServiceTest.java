@@ -88,7 +88,7 @@ public class TurnoServiceTest {
         profesionalService.guardarProfesional(profesional4);
 
 
-        paciente1 = new Paciente("Dario");
+        paciente1 = new Paciente("Dario", "Gomez", 24,111222333);
         pacienteService.guardarPaciente(paciente1);
 
 

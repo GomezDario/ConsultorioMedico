@@ -78,7 +78,7 @@ public class ProfesionalServiceTest {
         profesionalService.guardarProfesional(profesional4);
 
 
-        paciente1 = new Paciente("Dario");
+        paciente1 = new Paciente("Dario","Gomez", 24,111222333);
         pacienteService.guardarPaciente(paciente1);
 
         turno = new Turno(LocalDateTime.of(2024, 11, 15, 14, 30),profesional1,paciente1,1);
@@ -111,12 +111,12 @@ public class ProfesionalServiceTest {
 
 
 
-    @AfterEach
+    /*@AfterEach
     void tearDown(){
         profesionalService.clearAll();
         especialidadService.clearAll();
         pacienteService.clearAll();
         turnoService.clearAll();
-    }
+    }*/
 
 }
