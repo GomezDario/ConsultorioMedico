@@ -9,6 +9,7 @@ const Home = () => {
       <div className="content">
         <h1>Bienvenido al Consultorio Médico</h1>
       </div>
+      
     </div>
   );
 };

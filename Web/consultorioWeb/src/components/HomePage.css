@@ -7,8 +7,9 @@
   align-items: center;
   padding-top: 70px; /* Aseguramos que no se superponga con la navbar */
   height: 100vh;  /* Aseguramos que la página ocupe toda la altura de la ventana */
-  background-color: #ecf0f1; /* Color de fondo suave */
+  background-color: white; /* Color de fondo suave */
   font-family: Arial, sans-serif;  /* Fuente limpia para el texto */
+  
 }
 
 /* Estilo para el contenido */
@@ -25,7 +26,7 @@ h1 {
 
 p {
   font-size: 1.2em;
-  color: #7f8c8d;
+  color: #08e3f3;
 }
 
 /* Estilo de la Navbar para que esté en la parte superior */

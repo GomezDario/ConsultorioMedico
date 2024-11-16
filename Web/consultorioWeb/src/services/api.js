@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const api_paciente = 'http://localhost:8080/paciente';
+const api_profesional = 'http://localhost:8080/profesional';
 
 // Obtener todos los pacientes
 const getAllPacientes = () => {
@@ -32,11 +33,36 @@ const createPaciente = (paciente) => {
         });
 };
 
+// Obtener todos los profesionales
+const getAllProfesionales = () => {
+    return axios.get(`${api_profesional}/all`)
+        .then(response => response.data)
+        .catch(error => {
+            console.error('Error al obtener los profesionales:', error);
+            return Promise.reject(error);
+        });
+};
+
+// Obtener un profesional por ID
+const getProfesionalById = (id) => {
+    return axios.get(`${api_profesional}/${id}`)
+        .then(response => response.data)
+        .catch(error => {
+            console.error(`Error al obtener el profesional con ID ${id}:`, error);
+            return Promise.reject(error);
+        });
+};
+
+
+
 // Exportar los métodos
 const PacienteService = {
     getAllPacientes,
     getPacienteById,
     createPaciente,
+    getAllProfesionales,
+    getProfesionalById,
+
 };
 
 export default PacienteService;
