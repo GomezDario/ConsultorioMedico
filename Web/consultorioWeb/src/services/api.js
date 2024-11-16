@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const api_paciente = 'http://localhost:8080/paciente';
 const api_profesional = 'http://localhost:8080/profesional';
+const api_especialidad = 'http://localhost:8080/especialidad';
 
 // Obtener todos los pacientes
 const getAllPacientes = () => {
@@ -54,6 +55,27 @@ const getProfesionalById = (id) => {
 };
 
 
+// Obtener todas las especialidades
+const getAllEspecialidades = () => {
+    return axios.get(`${api_especialidad}/all`)
+        .then(response => response.data)
+        .catch(error => {
+            console.error('Error al obtener las especialidades:', error);
+            return Promise.reject(error);
+        });
+};
+
+// Obtener una especialidad por ID
+const getEspecialidadById = (id) => {
+    return axios.get(`${api_especialidad}/${id}`)
+        .then(response => response.data)
+        .catch(error => {
+            console.error(`Error al obtener la especialidad con ID ${id}:`, error);
+            return Promise.reject(error);
+        });
+};
+
+
 
 // Exportar los métodos
 const PacienteService = {
@@ -62,7 +84,8 @@ const PacienteService = {
     createPaciente,
     getAllProfesionales,
     getProfesionalById,
-
+    getAllEspecialidades,
+    getEspecialidadById
 };
 
 export default PacienteService;

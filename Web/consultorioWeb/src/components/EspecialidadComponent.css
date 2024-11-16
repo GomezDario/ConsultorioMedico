@@ -1,0 +1,72 @@
+/* Estilos generales para la lista de pacientes */
+div {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+/* Estilo para el título */
+h1 {
+    text-align: center;
+    color: #2C3E50;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Estilos para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+/* Estilos para las celdas de la tabla */
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+/* Estilos para las cabeceras de la tabla */
+th {
+    background-color: #3498DB;
+    color: white;
+    font-weight: bold;
+}
+
+/* Estilos para las filas de la tabla */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Estilos para las filas cuando se pasa el mouse (hover) */
+tr:hover {
+    background-color: #f1c40f;
+}
+
+/* Estilo para la tabla cuando no hay datos */
+tbody tr.empty {
+    font-style: italic;
+    color: #7f8c8d;
+    text-align: center;
+}
+
+/* Estilos para los bordes de la tabla */
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+/* Estilo de los botones (si decides agregar más funcionalidades) */
+button {
+    background-color: #2C3E50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* Cambiar color del botón al pasar el mouse */
+button:hover {
+    background-color: #2980B9;
+}
