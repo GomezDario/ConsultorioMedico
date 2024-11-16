@@ -40,10 +40,10 @@ public class EspecialidadServiceTest {
         dermatologia = new Especialidad("DERMATOLOGIA");
 
 
-        profesional1 = new Profesional("Juan", dermatologia, horaInicio, horaFin);
-        profesional2 = new Profesional("Dario", dermatologia, horaInicio, horaFin);
-        profesional3 = new Profesional("Gabriel", dermatologia, horaInicio, horaFin);
-        profesional4 = new Profesional("Franco", dermatologia, horaInicio, horaFin);
+        profesional1 = new Profesional("Juan", dermatologia, horaInicio, horaFin,777222444);
+        profesional2 = new Profesional("Dario", dermatologia, horaInicio, horaFin,111333555);
+        profesional3 = new Profesional("Gabriel", dermatologia, horaInicio, horaFin,444111222);
+        profesional4 = new Profesional("Franco", dermatologia, horaInicio, horaFin,222333444);
 
         dermatologia.agregarProfesional(profesional1);
         dermatologia.agregarProfesional(profesional2);
@@ -69,8 +69,8 @@ public class EspecialidadServiceTest {
     void testGuardarEspecialidadConMenosDe4Profesionales() {
 
         Especialidad especialidadInvalida = new Especialidad("CLINICAMEDICA");
-        Profesional profesional1 = new Profesional("Carlos", especialidadInvalida, LocalTime.of(9, 0), LocalTime.of(17, 0));
-        Profesional profesional2 = new Profesional("Ana", especialidadInvalida, LocalTime.of(9, 0), LocalTime.of(17, 0));
+        Profesional profesional1 = new Profesional("Carlos", especialidadInvalida, LocalTime.of(9, 0), LocalTime.of(17, 0),111222333);
+        Profesional profesional2 = new Profesional("Ana", especialidadInvalida, LocalTime.of(9, 0), LocalTime.of(17, 0),555444222);
         especialidadInvalida.agregarProfesional(profesional1);
         especialidadInvalida.agregarProfesional(profesional2);
 

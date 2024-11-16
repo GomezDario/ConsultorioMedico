@@ -23,6 +23,9 @@ public class Profesional {
     @Column(nullable = false)
     private String nombre;
 
+    @Column(nullable = false)
+    private int numeroDNI;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "especialidad_id", nullable = false)
     private Especialidad especialidad;
@@ -36,11 +39,12 @@ public class Profesional {
     @OneToMany(mappedBy = "profesional", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Turno> turnos = new HashSet<>();
 
-    public Profesional(String nombre, Especialidad especialidad, LocalTime horarioInicio, LocalTime horarioFin){
+    public Profesional(String nombre, Especialidad especialidad, LocalTime horarioInicio, LocalTime horarioFin, int numeroDNI){
         this.nombre = nombre;
         this.especialidad = especialidad;
         this.horarioInicio = horarioInicio;
         this.horarioFin = horarioFin;
+        this.numeroDNI = numeroDNI;
     }
 
     public void agregarTurno(Turno turno){

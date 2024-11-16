@@ -67,10 +67,10 @@ public class TurnoServiceTest {
         dermatologia = new Especialidad("DERMATOLOGIA");
 
 
-        profesional1 = new Profesional("Juan", dermatologia, horaInicio, horaFin);
-        profesional2 = new Profesional("Dario", dermatologia, horaInicio, horaFin);
-        profesional3 = new Profesional("Gabriel", dermatologia, horaInicio, horaFin);
-        profesional4 = new Profesional("Franco", dermatologia, horaInicio, horaFin);
+        profesional1 = new Profesional("Juan", dermatologia, horaInicio, horaFin,222333444);
+        profesional2 = new Profesional("Dario", dermatologia, horaInicio, horaFin,444555666);
+        profesional3 = new Profesional("Gabriel", dermatologia, horaInicio, horaFin,777111222);
+        profesional4 = new Profesional("Franco", dermatologia, horaInicio, horaFin,888222333);
 
         dermatologia.agregarProfesional(profesional1);
         dermatologia.agregarProfesional(profesional2);

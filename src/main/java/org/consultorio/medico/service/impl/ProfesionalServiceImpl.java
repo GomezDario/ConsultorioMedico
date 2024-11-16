@@ -1,7 +1,7 @@
 package org.consultorio.medico.service.impl;
 
 import org.consultorio.medico.modelo.Profesional;
-import org.consultorio.medico.modelo.exception.NombreDeProfesionalRepetido;
+import org.consultorio.medico.modelo.exception.DniDeProfesionalRepetido;
 import org.consultorio.medico.persistence.ProfesionalDAO;
 import org.consultorio.medico.service.interfaces.ProfesionalService;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -27,12 +27,11 @@ public class ProfesionalServiceImpl implements ProfesionalService {
     @Override
     public void guardarProfesional(Profesional profesional) {
 
-        //Quizas sacar restriccion
 
         try {
             profesionalDAO.save(profesional);
         }catch (DataIntegrityViolationException e){
-            throw new NombreDeProfesionalRepetido(profesional.getNombre());
+            throw new DniDeProfesionalRepetido("El numero de dni: " + profesional.getNumeroDNI() + " se encuetra repetido");
         }
 
     }

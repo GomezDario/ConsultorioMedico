@@ -16,8 +16,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 public class ProfesionalServiceTest {
@@ -55,32 +57,37 @@ public class ProfesionalServiceTest {
         dermatologia = new Especialidad("DERMATOLOGIA");
 
 
+        profesional1 = new Profesional("Juan", dermatologia,horaInicio, horaFin,11222333);
+        profesional2 = new Profesional("Dario", dermatologia, horaInicio, horaFin,222111333);
+        profesional3 = new Profesional("Gabriel", dermatologia, horaInicio, horaFin,444555666);
+        profesional4 = new Profesional("Franco", dermatologia, horaInicio, horaFin,777111222);
 
-        profesional1 = new Profesional("Juan", dermatologia,horaInicio, horaFin);
-        profesional2 = new Profesional("Dario", dermatologia, horaInicio, horaFin);
-        profesional3 = new Profesional("Gabriel", dermatologia, horaInicio, horaFin);
-        profesional4 = new Profesional("Franco", dermatologia, horaInicio, horaFin);
+
 
         dermatologia.agregarProfesional(profesional1);
         dermatologia.agregarProfesional(profesional2);
         dermatologia.agregarProfesional(profesional3);
         dermatologia.agregarProfesional(profesional4);
 
+        especialidadService.guardarEspecialidad(dermatologia);
+
+
+        profesionalService.guardarProfesional(profesional1);
+        profesionalService.guardarProfesional(profesional2);
+        profesionalService.guardarProfesional(profesional3);
+        profesionalService.guardarProfesional(profesional4);
+
+
         paciente1 = new Paciente("Dario");
+        pacienteService.guardarPaciente(paciente1);
 
         turno = new Turno(LocalDateTime.of(2024, 11, 15, 14, 30),profesional1,paciente1,1);
-
+        turnoService.guardarTurno(turno);
 
     }
 
     @Test
-    void testGuardarProfesional(){
-
-        especialidadService.guardarEspecialidad(dermatologia);
-        profesionalService.guardarProfesional(profesional1);
-        pacienteService.guardarPaciente(paciente1);
-
-        turnoService.guardarTurno(turno);
+    void testRecuperarProfesional(){
 
         Profesional profesionalRecuperado = profesionalService.recuperarProfesional(profesional1.getId());
         assertEquals("Juan", profesionalRecuperado.getNombre());
@@ -89,6 +96,20 @@ public class ProfesionalServiceTest {
         assertEquals(paciente1.getTurnos().size(),1);
 
     }
+
+    @Test
+    void testRecuperarTodosLosProfesionales() {
+
+        Set<Profesional> profesionales = profesionalService.allProfesionales();
+
+        assertEquals(4, profesionales.size());
+
+    }
+
+
+
+
+
 
     @AfterEach
     void tearDown(){

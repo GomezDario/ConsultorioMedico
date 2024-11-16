@@ -2,6 +2,7 @@ package org.consultorio.medico;
 
 import org.consultorio.medico.modelo.Paciente;
 import org.consultorio.medico.service.interfaces.PacienteService;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,9 +51,21 @@ public class PacienteServiceTest {
 
     }
 
+    @Test
+    void testRecuperarPaciente(){
+
+        Paciente pacienteRecuperado = pacienteService.recuperarPaciente(paciente1.getId());
+
+        assertEquals(pacienteRecuperado.getId(), paciente1.getId());
 
 
+    }
 
+
+    @AfterEach
+    void tearDown(){
+        pacienteService.clearAll();
+    }
 
 
 
