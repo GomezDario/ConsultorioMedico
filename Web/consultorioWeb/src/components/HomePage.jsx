@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
-import './HomePage.css';  // Asegurarse de que los estilos de Home estén importados correctamente
+import './HomePage.css';  
 
 const Home = () => {
   return (

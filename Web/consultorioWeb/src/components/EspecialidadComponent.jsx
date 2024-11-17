@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import Api from '../services/api';  // Importa el servicio creado
-import '../components/EspecialidadComponent.css';  // Puedes agregar tu propio estilo aquí
-import Navbar from './Navbar';  // Si tienes un Navbar como el de tu ejemplo
+import Api from '../services/api';  
+import '../components/EspecialidadComponent.css';  
+import Navbar from './Navbar';  
 
 const EspecialidadList = () => {
     const [especialidades, setEspecialidades] = useState([]);
 
     useEffect(() => {
-        // Llamada al servicio para obtener todas las especialidades
+        
         Api.getAllEspecialidades()
             .then(data => setEspecialidades(data))
             .catch(error => console.error('Error al cargar las especialidades:', error));

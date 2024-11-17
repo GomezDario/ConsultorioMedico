@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Api from '../services/api'; // Asegúrate de agregar métodos específicos de turno en Api.js
+import Api from '../services/api'; 
 import Navbar from './Navbar';
 import '../components/TurnoComponent.css'
 
@@ -7,7 +7,7 @@ const TurnoList = () => {
     const [turnos, setTurnos] = useState([]);
 
     useEffect(() => {
-        // Llamada al servicio para obtener todos los turnos
+        
         Api.getAllTurnos()
             .then(data => setTurnos(data))
             .catch(error => console.error('Error al cargar los turnos:', error));

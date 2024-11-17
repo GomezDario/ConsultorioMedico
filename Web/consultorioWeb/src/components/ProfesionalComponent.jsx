@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import ProfesionalService from '../services/api'
-import '../components/ProfesionalComponent.css';  // Importar el archivo de estilos
+import '../components/ProfesionalComponent.css';  
 import Navbar from './Navbar';
 
 const ProfesionalList = () => {
     const [profesionales, setProfesionales] = useState([]);
 
     useEffect(() => {
-        // Llamada al servicio para obtener todos los profesionales
+        
         ProfesionalService.getAllProfesionales()
             .then(data => setProfesionales(data))
             .catch(error => console.error('Error al cargar los profesionales:', error));

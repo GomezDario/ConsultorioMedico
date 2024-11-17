@@ -6,7 +6,7 @@ const PacienteList = () => {
     const [pacientes, setPacientes] = useState([]);
 
     useEffect(() => {
-        // Llamada al servicio para obtener todos los pacientes
+        
         Api.getAllPacientes()
             .then(data => setPacientes(data))
             .catch(error => console.error('Error al cargar los pacientes:', error));

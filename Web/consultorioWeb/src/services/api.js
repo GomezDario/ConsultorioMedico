@@ -5,7 +5,7 @@ const api_profesional = 'http://localhost:8080/profesional';
 const api_especialidad = 'http://localhost:8080/especialidad';
 const api_turno = 'http://localhost:8080/turno';
 
-// Obtener todos los pacientes
+
 const getAllPacientes = () => {
     return axios.get(`${api_paciente}/all`)
         .then(response => response.data)
@@ -15,7 +15,7 @@ const getAllPacientes = () => {
         });
 };
 
-// Obtener un paciente por ID
+
 const getPacienteById = (id) => {
     return axios.get(`${api_paciente}/${id}`)
         .then(response => response.data)
@@ -25,7 +25,7 @@ const getPacienteById = (id) => {
         });
 };
 
-// Crear un nuevo paciente
+
 const createPaciente = (paciente) => {
     return axios.post(api_paciente, paciente)
         .then(response => response.data)
@@ -35,7 +35,7 @@ const createPaciente = (paciente) => {
         });
 };
 
-// Obtener todos los profesionales
+
 const getAllProfesionales = () => {
     return axios.get(`${api_profesional}/all`)
         .then(response => response.data)
@@ -45,7 +45,7 @@ const getAllProfesionales = () => {
         });
 };
 
-// Obtener un profesional por ID
+
 const getProfesionalById = (id) => {
     return axios.get(`${api_profesional}/${id}`)
         .then(response => response.data)
@@ -56,7 +56,7 @@ const getProfesionalById = (id) => {
 };
 
 
-// Obtener todas las especialidades
+
 const getAllEspecialidades = () => {
     return axios.get(`${api_especialidad}/all`)
         .then(response => response.data)
@@ -66,7 +66,7 @@ const getAllEspecialidades = () => {
         });
 };
 
-// Obtener una especialidad por ID
+
 const getEspecialidadById = (id) => {
     return axios.get(`${api_especialidad}/${id}`)
         .then(response => response.data)
@@ -76,7 +76,7 @@ const getEspecialidadById = (id) => {
         });
 };
 
-// Obtener todos los turnos
+
 const getAllTurnos = () => {
     return axios.get(api_turno)
         .then(response => response.data)
@@ -86,7 +86,7 @@ const getAllTurnos = () => {
         });
 };
 
-// Obtener un turno por ID
+
 const getTurnoById = (id) => {
     return axios.get(`${api_turno}/${id}`)
         .then(response => response.data)
@@ -96,7 +96,7 @@ const getTurnoById = (id) => {
         });
 };
 
-// Crear un nuevo turno
+
 const createTurno = (turno) => {
     return axios.post(api_turno, turno)
         .then(response => response.data)
@@ -108,7 +108,7 @@ const createTurno = (turno) => {
 
 
 
-// Exportar los métodos
+
 const PacienteService = {
     getAllPacientes,
     getPacienteById,
