@@ -61,11 +61,10 @@ public class PacienteServiceTest {
 
     }
 
-
-    /*@AfterEach
+    @AfterEach
     void tearDown(){
         pacienteService.clearAll();
-    }*/
+    }
 
 
 

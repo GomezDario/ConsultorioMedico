@@ -33,12 +33,10 @@ public class EspecialidadServiceTest {
     @BeforeEach
     public void prepare() {
 
-        //Horario en el que trabajan los profesionales, el consultorio es de 8 a 23, estos profesionales tienen su horario particular
         LocalTime horaInicio = LocalTime.of(8, 0);
         LocalTime horaFin = LocalTime.of(16, 0);
 
         dermatologia = new Especialidad("DERMATOLOGIA");
-
 
         profesional1 = new Profesional("Juan", dermatologia, horaInicio, horaFin,777222444);
         profesional2 = new Profesional("Dario", dermatologia, horaInicio, horaFin,111333555);

@@ -111,12 +111,12 @@ public class ProfesionalServiceTest {
 
 
 
-    /*@AfterEach
+    @AfterEach
     void tearDown(){
         profesionalService.clearAll();
         especialidadService.clearAll();
         pacienteService.clearAll();
         turnoService.clearAll();
-    }*/
+    }
 
 }
